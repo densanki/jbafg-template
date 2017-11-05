@@ -1,0 +1,37 @@
+
+plugins {
+    id 'java'
+    id 'war'
+    id 'eclipse'
+    id 'org.springframework.boot' version '1.5.8.RELEASE'
+}
+
+description = 'Template with Java Backend, Angular 4 Frontend, Gradle Build'
+version = '0.0.1'
+group = 'de'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+war {
+    baseName = "${rootProject.name}"
+    version =  "${version}"
+
+    from('frontend/dist') {
+        //Public is a default supported Spring Boot resources directory.
+        into 'src/main/resources/public'
+    }
+}
+
+//jar {
+//    baseName = "${rootProject.name}"
+//    version =  "${version}"
+//}
+
+//frontend:build will be run before the processResources
+processResources.dependsOn(':frontend:build')
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}

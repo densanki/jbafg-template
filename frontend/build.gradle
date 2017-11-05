@@ -1,0 +1,25 @@
+
+// Must before plugins area
+buildscript {
+  dependencies {
+    classpath "com.moowork.gradle:gradle-node-plugin:1.2.0-SNAPSHOT"
+  }
+}
+
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+task build(type: NpmTask) {
+  args = ['run', 'build']
+}
+
+build.dependsOn(npm_install)
+
+node {
+  version = '8.9.0'
+  npmVersion = '5.5.1'
+  download = true
+  workDir = file("${project.buildDir}/node")
+  nodeModulesDir = file("${project.projectDir}")
+}

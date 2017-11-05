@@ -1,0 +1,5 @@
+rootProject.name = 'jbafg-template'
+
+include 'backend'
+include 'frontend'
+include 'docs'

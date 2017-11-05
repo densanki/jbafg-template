@@ -1,0 +1,9 @@
+apply plugin : 'org.asciidoctor.convert'
+
+asciidoctor {
+    sources {
+        include 'jbafg.adoc'
+    }
+}
+
+build.dependsOn 'asciidoctor'
