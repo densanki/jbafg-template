@@ -21,5 +21,15 @@ node {
   npmVersion = '5.5.1'
   download = true
   workDir = file("${project.buildDir}/node")
-  nodeModulesDir = file("${project.projectDir}")
+  nodeModulesDir = file("${project.projectDir}/node_modules")
+  npmWorkDir = file("${project.projectDir}/node")
+}
+
+// clean node/node_modules/dist
+task npmClean(type: Delete) {
+  final def webDir = "${rootDir}"
+  delete "node"
+  delete "node_modules"
+  delete "dist"
+  delete "coverage"
 }
