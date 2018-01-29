@@ -17,10 +17,10 @@ war {
     baseName = "${rootProject.name}"
     version =  "${version}"
 
-    from('frontend/dist') {
-        //Public is a default supported Spring Boot resources directory.
-        into 'src/main/resources/public'
-    }
+//   from('frontend/dist') {
+//        //Public is a default supported Spring Boot resources directory.
+//        into 'public'
+//    }
 }
 
 //jar {
@@ -28,8 +28,10 @@ war {
 //    version =  "${version}"
 //}
 
+//war.dependsOn(build)
+
 //frontend:build will be run before the processResources
-processResources.dependsOn(':frontend:build')
+classes.dependsOn(':frontend:build')
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
